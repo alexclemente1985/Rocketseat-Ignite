@@ -7,8 +7,10 @@ export class UserService {
 
   static createUser(req: Request, res: Response, userStore: User[]) {
     const { name, username } = req.body;
-
-    if (name && username) {
+    const userIdx = this.getUserIdx(userStore, username);
+    if (userIdx !== -1) {
+      res.status(400).json({ error: 'Usuário já cadastrado.' });
+    } else if (name && username) {
       const user: User = new User(name, username);
       userStore.push(user);
       res.status(200).json({

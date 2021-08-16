@@ -1,4 +1,4 @@
-import express, { Request, response, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { NextFunction } from 'express-serve-static-core';
 import TodoController from './controllers/TodoController';
 import UserController from './controllers/UserController';
